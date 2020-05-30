@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'LoginPage.dart';
-
-import 'HomePage.dart';
+import 'package:login_forms/pages/home/HomePage.dart';
+import 'package:login_forms/pages/login/LoginPage.dart';
+import 'package:login_forms/pages/register/RegisterPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,6 +10,7 @@ void main() {
 final routes = {
   "/login": (BuildContext context) => LoginPage(),
   "/home": (BuildContext context) => HomePage(),
+  "/register": (BuildContext context) => RegisterPage(),
 };
 
 class MyApp extends StatelessWidget {

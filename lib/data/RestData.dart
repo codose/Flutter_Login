@@ -1,5 +1,7 @@
 import 'package:login_forms/utils/NetworkUtil.dart';
 
+import 'models/User.dart';
+
 class RestData{
   NetWorkUtil _netWorkUtil = NetWorkUtil();
   static final BASE_URL = "";
