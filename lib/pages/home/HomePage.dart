@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
           child: Center(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   CircleAvatar(
                     radius: 60,
@@ -27,13 +28,13 @@ class _HomePageState extends State<HomePage> {
                   Text("My name is ${widget.user.fullname}",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 32,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold)),
                   Padding(padding: EdgeInsets.only(top: 20)),
                   Text("Email is ${widget.user.username}",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 32,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold)),
                 ]),
           ),

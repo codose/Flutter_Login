@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_forms/data/DatabaseHelper.dart';
 import 'package:login_forms/data/models/User.dart';
+import 'package:login_forms/pages/home/HomePage.dart';
 import 'package:login_forms/pages/register/RegisterPresenter.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -157,7 +158,9 @@ class _RegisterPageState extends State<RegisterPage>
                                             BorderRadius.circular(12.0),
                                       ),
                                       color: Colors.grey,
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
                                       minWidth: double.infinity,
                                       height: 48.0,
                                       child: Text(
@@ -180,7 +183,6 @@ class _RegisterPageState extends State<RegisterPage>
 
   @override
   void onRegisterError(String error) {
-    print(error);
     _showSnackBar(error.toString());
     setState(() {
       _isLoading = false;
@@ -193,15 +195,16 @@ class _RegisterPageState extends State<RegisterPage>
     setState(() {
       _isLoading = false;
     });
+    Navigator.push(context, MaterialPageRoute(builder: (_) => HomePage(user)));
   }
 
   void _submit() async {
     final form = formKey.currentState;
     if (form.validate()) {
       setState(() {
+        form.save();
         user = User.register(_username, _password, _fullname);
         _isLoading = true;
-        form.save();
         _presenter.registerUser(user);
       });
     }
