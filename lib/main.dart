@@ -9,7 +9,6 @@ void main() {
 
 final routes = {
   "/login": (BuildContext context) => LoginPage(),
-  "/home": (BuildContext context) => HomePage(),
   "/register": (BuildContext context) => RegisterPage(),
 };
 

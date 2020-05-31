@@ -34,14 +34,32 @@ class DatabaseHelper {
 
   void _onCreate(Database db, int version) async {
     await db.execute(
-        "CREATE_TABLE User (id INTEGER PRIMARY KEY, username TEXT,  password TEXT, fullname TEXT");
+        "CREATE TABLE User (id INTEGER PRIMARY KEY, username TEXT,  password TEXT, fullname TEXT)");
   }
 
 //Insertion
-  Future<int> saveUser(User user) async {
+  Future<String> saveUser(User user) async {
     var dbClient = await db;
-    int res = await dbClient.insert("User", user.toMap());
-    return res;
+    await dbClient.insert("User", user.toMap());
+    return "Success";
+  }
+
+  Future<User> getUser(User user) async {
+    var dbClient = await db;
+    var user2;
+    var result = await dbClient.rawQuery('SELECT * FROM User');
+
+    result.forEach((element) {
+      if (element.containsValue(user.username)) {
+        var mUser = User.map(element);
+        if (mUser.password == user.password) {
+          user2 = User.map(element);
+        }
+      } else {
+        return null;
+      }
+    });
+    return user2;
   }
 
   //Deletion
@@ -49,7 +67,5 @@ class DatabaseHelper {
     var dbClient = await db;
     int res = await dbClient.delete("User");
     return res;
- }
-
-
+  }
 }

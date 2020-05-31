@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:login_forms/data/models/User.dart';
 
 class HomePage extends StatefulWidget {
+  final User user;
+  HomePage(this.user);
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -21,13 +24,13 @@ class _HomePageState extends State<HomePage> {
                     backgroundImage: AssetImage("assests/img.jpg"),
                   ),
                   Padding(padding: EdgeInsets.only(top: 40)),
-                  Text("My name is Ose",
+                  Text("My name is ${widget.user.fullname}",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 32,
                           fontWeight: FontWeight.bold)),
                   Padding(padding: EdgeInsets.only(top: 20)),
-                  Text("Email is 0se@...",
+                  Text("Email is ${widget.user.username}",
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 32,
